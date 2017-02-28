@@ -1,0 +1,28 @@
+
+.normal {
+}
+
+.login_container {
+  width: 40%;
+}
+
+.title_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1998FC;
+  color: #fff;
+  height: 124px;
+}
+
+.login_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form_box {
+  width: 50%
+}
