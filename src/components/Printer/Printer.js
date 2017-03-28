@@ -9,7 +9,7 @@ function Printer({result}) {
   function getCards(ls) {
     if(ls.length > 0) {
       let arr = ls.map((ele, index) => (
-        <Col className={styles.col} span={8} key={index}>
+        <Col className={styles.col} span={12} key={index}>
           <PrinterCard data={ele}/>
         </Col>
       ));
@@ -34,7 +34,7 @@ function Printer({result}) {
 }
 
 function mapStateToProps(state) {
-  const {result} = state.printHistory;
+  const {result} = state.printer;
   return {
     result,
   }

@@ -43,10 +43,12 @@ function StudentInfo({ dispatch, form,
       if (errors) {
           return;
       }else{
-        if(values.time.length > 0) {
-          values.startDate = values.time[0].format('YYYY-MM-DD');
-          values.endDate = values.time[1].format('YYYY-MM-DD');
-          delete values.time;
+        if(values.time) {
+          if(values.time.length > 0) {
+            values.startDate = values.time[0].format('YYYY-MM-DD');
+            values.endDate = values.time[1].format('YYYY-MM-DD');
+            delete values.time;
+          }        
         }
         dispatch({
           type: 'studentInfo/getList',
@@ -148,8 +150,8 @@ function StudentInfo({ dispatch, form,
                     <Select>
                       <Option value='1'>学籍证明</Option>
                       <Option value='2'>成绩单</Option>
-                      <Option value='3'>大学英语四级证明</Option>
-                      <Option value='4'>大学英语六级证明</Option>
+                      {/*<Option value='3'>大学英语四级证明</Option>
+                      <Option value='4'>大学英语六级证明</Option>*/}
                     </Select>
                   )}
                 </FormItem>

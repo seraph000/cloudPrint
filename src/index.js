@@ -11,6 +11,8 @@ app.use(createLoading());
 // 3. Model
 app.model(require("./models/studentInfo"));
 
+app.model(require("./models/printer"));
+
 app.model(require("./models/deviceId"));
 
 app.model(require("./models/detail"));

@@ -9,8 +9,8 @@ function PrintHistory({result: dataSource, loading}) {
   const columns = [
     {
       title: '打印机编号',
-      dataIndex: 'Number',
-      key: 'Number',
+      dataIndex: 'DeviceCode',
+      key: 'DeviceCode',
     },
     {
       title: '累计用纸（单位：张）',
@@ -26,8 +26,8 @@ function PrintHistory({result: dataSource, loading}) {
     },
     {
       title: '累计加纸（单位：张）',
-      dataIndex: 'Amout',
-      key: 'Amout',
+      dataIndex: 'AddPageAmout',
+      key: 'AddPageAmout',
     },
   ];
 

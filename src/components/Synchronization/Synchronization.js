@@ -15,10 +15,12 @@ function Synchronization({ dispatch, form,
         if (errors) {
             return;
         }else{
-          if(values.time.length > 0) {
-            values.startDate = values.time[0].format('YYYY-MM-DD');
-            values.endDate = values.time[1].format('YYYY-MM-DD');
-            delete values.time;
+          if(values.time) {
+            if(values.time.length > 0) {
+              values.startDate = values.time[0].format('YYYY-MM-DD');
+              values.endDate = values.time[1].format('YYYY-MM-DD');
+              delete values.time;
+            }
           }
           if(sorter.order) {
             if(sorter.order == "ascend") {

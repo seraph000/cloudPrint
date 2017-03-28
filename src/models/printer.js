@@ -1,13 +1,13 @@
-import {getList} from '../services/printHistory.js';
+import {getList} from '../services/printer.js';
 
 export default {
-  namespace: 'printHistory',
+  namespace: 'printer',
   state: {
     result: []
   },
   reducers: {
     save(state, {payload}) {
-      const result = payload.data.result
+      const {result} = payload;
       return {
         ...state,
         result
@@ -16,26 +16,26 @@ export default {
   },
   effects: {
     *getList(state, {call, put}) {
-      const data = yield call(getList, {
+      const {result} = yield call(getList, {
         method: 'get'
       });
       yield put({
         type: 'save',
         payload: {
-          data
+          result
         }
-      });
+      })
     }
   },
   subscriptions: {
-    setup({history, dispatch}) {
+    setup({dispatch, history}) {
       history.listen(({pathname}) => {
-        if(pathname.toLowerCase() == '/printhistory') {
+        if(pathname.toLowerCase() == '/printer' || pathname.toLowerCase() == '/printer/detail') {
           dispatch({
             type: 'getList'
-          })
+          });
         }
-      })
+      });
     }
   },
 };

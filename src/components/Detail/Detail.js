@@ -7,7 +7,7 @@ const createForm = Form.create;
 const {RangePicker} = DatePicker;
 const Option = Select.Option;
 
-function Detail({ dispatch, form, result: Printers, deviceId, location,
+function Detail({ dispatch, form, result: Printers, deviceId,
    Entities: dataSource, PageIndex: current, PageSize: pageSize, TotalItemCount: total, loading }) {
 
   function _onChange(pagination, filters, sorter) {
@@ -73,7 +73,8 @@ function Detail({ dispatch, form, result: Printers, deviceId, location,
 
   function _getPrinters(ls) {
     const arr = ls.map((ele, index) => {
-      return <Option key={index} value={ele.Id+''}>{ele.Number}</Option>
+      console.log(ele)
+      return <Option key={index} value={ele.Id+''}>{ele.DeviceCode}</Option>
     });
     return arr;
   }
@@ -81,8 +82,8 @@ function Detail({ dispatch, form, result: Printers, deviceId, location,
   const columns = [
     {
       title: '加纸时间',
-      dataIndex: 'CreateTime',
-      key: 'CreateTime',
+      dataIndex: 'CreatedTime',
+      key: 'CreatedTime',
       render: (text) => {
         return text.replace(/-/g, '/');
       },
@@ -90,8 +91,8 @@ function Detail({ dispatch, form, result: Printers, deviceId, location,
     },
     {
       title: '加纸数量',
-      dataIndex: 'AddPage',
-      key: 'AddPage',
+      dataIndex: 'PageNumber',
+      key: 'PageNumber',
     },
     {
       title: '本次已用纸数量',
@@ -107,13 +108,25 @@ function Detail({ dispatch, form, result: Printers, deviceId, location,
     },
     {
       title: '预计剩余纸张数量',
-      dataIndex: 'Amout',
-      key: 'Amout',
-      render: (text, record) => {
-        if(record.UsePage) {
-          return text+record.AddPage-record.UsePage
+      dataIndex: 'LogExpectPageNumber',
+      key: 'LogExpectPageNumber',
+      render: (text) => {
+        if(!text) {
+          return 0;
         }else {
-          return text+record.AddPage
+          return text;
+        }
+      }
+    },
+    {
+      title: '预计可用纸张数量',
+      dataIndex: 'LogPrintNumber',
+      key: 'LogPrintNumber',
+      render: (text) => {
+        if(!text) {
+          return 0;
+        }else {
+          return text;
         }
       }
     },
@@ -183,7 +196,7 @@ function Detail({ dispatch, form, result: Printers, deviceId, location,
 
 function mapStateToProps(state) {
   const {Entities, PageIndex, PageSize, TotalItemCount} = state.detail;
-  const {result} = state.printHistory;
+  const {result} = state.printer;
   const deviceId = state.deviceId;
   return {
     loading: state.loading.models.detail,

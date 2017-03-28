@@ -13,5 +13,12 @@
         "dva-hmr"
       ]
     }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://cloudprint.kingyuer.com/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
   }
 }

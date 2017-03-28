@@ -60,7 +60,7 @@ function Header({ location, routes, params }) {
       </div>
       <div className={styles.drop_box}>
         <Dropdown overlay={drop}>
-          <a className="ant-dropdown-link" href="#">
+          <a className="ant-dropdown-link">
             {username} <Icon type="down" />
           </a>
         </Dropdown>
